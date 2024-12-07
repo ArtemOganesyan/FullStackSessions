@@ -26,6 +26,7 @@ class Student {
         lastName = scanner.next();
         System.out.println("Enter student age: ");
         age = scanner.nextInt();
+        scanner.close();
     }
 
     public void displayStudent() {
