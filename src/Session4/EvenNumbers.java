@@ -2,16 +2,20 @@ package Session4;
 
 import java.util.Scanner;
 
-public class MultiplicationTable {
+public class EvenNumbers {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("Enter a number:");
         int number = scanner.nextInt();
-        scanner.close();
 
-        for (int i = 1; i <= 10; i++) {
-            int result = number*i;
-            System.out.println(number + "*" + i + "=" + result);
+        int i = 1;
+        while (i <= number) {
+            if (i % 2 == 0) {
+                System.out.print(i + " ");
+            }
+            i++;
         }
+        scanner.close();
     }
 }
