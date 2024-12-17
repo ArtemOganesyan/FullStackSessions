@@ -1,4 +1,6 @@
-package Session4;
+package Session6;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentManagement {
@@ -20,7 +22,8 @@ public class StudentManagement {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Student[] students = new Student[5];
+        //Student[] students = new Student[5];
+        ArrayList<Student> students = new ArrayList<>();
         int studentCount = 0;
 
         while (true) {
@@ -38,11 +41,16 @@ public class StudentManagement {
                     System.out.println("Enter student id: ");
                     int studentId = scanner.nextInt();
                     scanner.nextLine();
-                    for (int i = 0; i < studentCount; i++) {
-                        if (students[i].studentId == studentId) {
-                            idExists = true;
-                            break;
-                        }
+
+//                    for (int i = 0; i < studentCount; i++) {
+//                        if (students[i].studentId == studentId) {
+//                            idExists = true;
+//                            break;
+//                        }
+//                    }
+                    if (students.get(studentId) != null) {
+                        idExists = true;
+                        break;
                     }
                     if (idExists) {
                         System.out.println("Student with id " + studentId + " already exists");
@@ -60,14 +68,15 @@ public class StudentManagement {
 
                     Student student = new Student(studentId, firstName, lastName, studentAge);
 
-                    students[studentCount] = student;
-                    studentCount++;
+                    //students[studentCount] = student;
+                    students.add(student);
+                    //studentCount++;
 
                     System.out.println("Information saved successfully");
                     break;
                 case 2:
                     for (int i = 0; i < studentCount; i++) {
-                        Student s = students[i];
+                        Session6.StudentManagement.Student s = students[i];
                         System.out.println("===== Student Details =====");
                         System.out.println("Student ID: " + s.studentId);
                         System.out.println("First Name: " + s.firstName);
