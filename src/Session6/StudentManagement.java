@@ -22,9 +22,7 @@ public class StudentManagement {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        //Student[] students = new Student[5];
         ArrayList<Student> students = new ArrayList<>();
-        int studentCount = 0;
 
         while (true) {
             System.out.println("===== Student Menu =====");
@@ -42,12 +40,6 @@ public class StudentManagement {
                     int studentId = scanner.nextInt();
                     scanner.nextLine();
 
-//                    for (int i = 0; i < studentCount; i++) {
-//                        if (students[i].studentId == studentId) {
-//                            idExists = true;
-//                            break;
-//                        }
-//                    }
                     try {
                         students.get(studentId);
                         idExists = true;
@@ -71,9 +63,7 @@ public class StudentManagement {
 
                     Student student = new Student(studentId, firstName, lastName, studentAge);
 
-                    //students[studentCount] = student;
                     students.add(student);
-                    //studentCount++;
 
                     System.out.println("Information saved successfully");
                     break;
@@ -90,18 +80,9 @@ public class StudentManagement {
                     break;
 
                 case 3:
-                    // Provide an option to delete a student
                     System.out.println("Enter student id to delete: ");
                     int id = scanner.nextInt();
-                    idExists = false; // Use the existing variable
-//                    for (int i = 0; i < studentCount; i++) {
-//                        if (students[i].studentId == id) {
-//                            students[i] = null;
-//                            System.out.println("Student deleted successfully");
-//                            idExists = true;
-//                            break;
-//                        }
-//                    }
+                    idExists = false;
                     students.remove(id);
                     System.out.println("Student deleted successfully");
                     if (!idExists) {
