@@ -75,8 +75,8 @@ public class StudentManagement {
                     System.out.println("Information saved successfully");
                     break;
                 case 2:
-                    for (int i = 0; i < studentCount; i++) {
-                        Session6.StudentManagement.Student s = students[i];
+                    for (int i = 0; i < students.size(); i++) {
+                        Student s = students.get(i);
                         System.out.println("===== Student Details =====");
                         System.out.println("Student ID: " + s.studentId);
                         System.out.println("First Name: " + s.firstName);
@@ -91,14 +91,16 @@ public class StudentManagement {
                     System.out.println("Enter student id to delete: ");
                     int id = scanner.nextInt();
                     idExists = false; // Use the existing variable
-                    for (int i = 0; i < studentCount; i++) {
-                        if (students[i].studentId == id) {
-                            students[i] = null;
-                            System.out.println("Student deleted successfully");
-                            idExists = true;
-                            break;
-                        }
-                    }
+//                    for (int i = 0; i < studentCount; i++) {
+//                        if (students[i].studentId == id) {
+//                            students[i] = null;
+//                            System.out.println("Student deleted successfully");
+//                            idExists = true;
+//                            break;
+//                        }
+//                    }
+                    students.remove(id);
+                    System.out.println("Student deleted successfully");
                     if (!idExists) {
                         System.out.println("Student with id " + id + " does not exist");
                     }
