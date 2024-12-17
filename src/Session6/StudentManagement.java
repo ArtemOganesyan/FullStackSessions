@@ -48,9 +48,12 @@ public class StudentManagement {
 //                            break;
 //                        }
 //                    }
-                    if (students.get(studentId) != null) {
+                    try {
+                        students.get(studentId);
                         idExists = true;
                         break;
+                    } catch (IndexOutOfBoundsException e) {
+
                     }
                     if (idExists) {
                         System.out.println("Student with id " + studentId + " already exists");
