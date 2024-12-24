@@ -22,8 +22,8 @@ public class CustomException {
 
         try {
             validateAge(age);
-        } catch (InvalidAgeException e) {
-            System.out.println("Invalid age: " + e.getMessage());
+        } catch (InvalidAgeException invalidAgeException) {
+            System.out.println("Invalid age: " + invalidAgeException.getMessage());
         } finally {
             scanner.close();
         }
