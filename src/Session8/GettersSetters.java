@@ -7,6 +7,7 @@ public class GettersSetters {
 //        p.lastName = "Oganesyan";
 //        System.out.println(p.firstName + " " + p.lastName);
         p.setFirstName("");
+        p.setAge(-9);
         System.out.println(p.getFirstName());
     }
 }
@@ -14,6 +15,19 @@ public class GettersSetters {
 class Person {
     private String firstName;
     private String lastName;
+    private int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        if (age < 0) {
+            System.out.println("Invalid age");
+        } else {
+            this.age = age;
+        }
+    }
 
     public String getFirstName() {
         return firstName;
@@ -25,4 +39,5 @@ class Person {
             this.firstName = firstName;
         }
     }
+
 }
