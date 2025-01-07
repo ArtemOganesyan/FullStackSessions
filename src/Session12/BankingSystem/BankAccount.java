@@ -30,8 +30,9 @@ abstract class BankAccount {
             System.out.println("Invalid deposit amount");
         }
     }
+
     public void withdraw(double amount) {
-        if (amount > 0 && amount <= accountBalance) {
+        if (amount > 0) {
             accountBalance -= amount;
         } else {
             System.out.println("Invalid withdraw amount");
