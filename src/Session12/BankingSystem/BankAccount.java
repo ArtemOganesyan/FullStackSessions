@@ -11,6 +11,11 @@ abstract class BankAccount {
         this.accountBalance = initialBalance;
     }
 
+    public BankAccount(String accountHolderName, double initialBalance) {
+        this.accountHolderName = accountHolderName;
+        this.accountBalance = initialBalance;
+    }
+
     public String getAccountNumber() {
         return accountNumber;
     }
@@ -31,7 +36,7 @@ abstract class BankAccount {
         }
     }
 
-    public void withdraw(double amount) {
+    public void withdraw(double amount) throws InvalidWithdrawalException {
         if (amount > 0) {
             accountBalance -= amount;
         } else {

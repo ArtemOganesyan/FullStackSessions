@@ -2,6 +2,7 @@ package Session12.BankingSystem;
 
 import java.util.Scanner;
 
+import static java.lang.System.err;
 import static java.lang.System.exit;
 
 public class BankSystem {
@@ -62,7 +63,12 @@ public class BankSystem {
                 case 2:
                     System.out.println("Enter withdraw amount: ");
                     double withdrawAmount = scanner.nextDouble();
-                    account.withdraw(withdrawAmount);
+                    try {
+                        account.withdraw(withdrawAmount);
+                    } catch (InvalidWithdrawalException error) {
+                        System.out.println(error.getMessage());
+                    }
+
                     break;
                 case 3:
                     System.out.println("Current balance: " + account.getBalance());
