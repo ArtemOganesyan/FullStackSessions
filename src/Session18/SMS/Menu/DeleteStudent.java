@@ -27,7 +27,7 @@ public class DeleteStudent {
         }
 
         if (studentToRemove != null) {
-            studentService.getStudents().remove(studentToRemove);
+            studentService.deleteStudent(studentToRemove.getId());
             System.out.println("Student removed successfully.");
         } else {
             System.out.println("Student with ID " + id + " not found.");
