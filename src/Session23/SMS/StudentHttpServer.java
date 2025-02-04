@@ -226,37 +226,9 @@ public class StudentHttpServer {
             int studentId = jsonNode.get("id").asInt();
             double gpa = jsonNode.get("gpa").asDouble();
 
-            // Find the student
-            Student student = null;
-            for (Student s : studentService.getStudents()) {
-                if (s.getId() == studentId) {
-                    student = s;
-                }
-            }
-            // Create new graduated student
-            GraduateStudent graduateStudent = new GraduateStudent(
-                    student.getId(),
-                    student.getFirstName(),
-                    student.getLastName(),
-                    student.getAge(),
-                    student.getMajor()
-            );
+            GraduateStudent student = Graduation.graduationFor(studentId, gpa, studentService);
 
-            // Set GPA
-            try {
-                graduateStudent.setGPA(gpa);
-            } catch (Exception e) {
-                e.printStackTrace();
-                return;
-            }
-
-            // Delete undergraduated
-            studentService.deleteStudent(studentId);
-            studentService.addStudent(graduateStudent);
-            studentService.saveStudents();
-            // Save everything
-
-            String response = objectMapper.writeValueAsString(graduateStudent);
+            String response = objectMapper.writeValueAsString(student);
             exchange.getResponseHeaders().set("Content-Type", "application/json");
             exchange.sendResponseHeaders(200, response.getBytes().length);
             OutputStream os = exchange.getResponseBody();
